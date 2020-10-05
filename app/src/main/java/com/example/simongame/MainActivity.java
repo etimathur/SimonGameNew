@@ -23,6 +23,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 import static java.lang.Thread.*;
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Integer> list;
     ImageView[] imageViews;
     final Handler handler = new Handler();
+    int blinkDelay=0;
 
 
     @Override
@@ -65,26 +68,33 @@ public class MainActivity extends AppCompatActivity {
     }
     public void BlinkingImages()  {
         int a=4;
-        for(int i=0;i<a;i++){
+        for(int i=1;i<=a;i++){
             Random randomNum = new Random();
             final int num = randomNum.nextInt(8);
             Log.i("Image", String.valueOf(num));
             handler.postDelayed(new Runnable() {
+
                 @Override
                 public void run() {
                     blink(num);
                 }
-            }, 3000);
-
-
+            }, 1000 * i);
         }
+
     }
 
     public void blink(final int num) {
 
-
-        ImageView image=imageViews[num];
+        Log.i("Blink","now"+String.valueOf(num));
+        final ImageView image=imageViews[num];
         image.setAlpha(0);
+        blinkDelay++;
+        handler.postDelayed(new Runnable() {
 
+            @Override
+            public void run() {
+                image.setAlpha(255);
+            }
+        }, 500);
     }
 }
