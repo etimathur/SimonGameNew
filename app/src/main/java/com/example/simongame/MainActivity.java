@@ -1,17 +1,9 @@
 package com.example.simongame;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.gridlayout.widget.GridLayout;
-
-import android.annotation.SuppressLint;
-import android.app.ActionBar;
-import android.graphics.Color;
-import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Gravity;
 
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
