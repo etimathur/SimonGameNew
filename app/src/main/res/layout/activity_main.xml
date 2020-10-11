@@ -49,6 +49,7 @@
             android:adjustViewBounds="true"
             android:cropToPadding="true"
             android:padding="4dp"
+            android:onClick="select"
             android:tag="0" />
 
         <ImageView
@@ -60,6 +61,7 @@
             android:layout_margin="13dp"
             android:cropToPadding="true"
             android:padding="4dp"
+            android:onClick="select"
             android:tag="3" />
 
         <ImageView
@@ -71,6 +73,7 @@
             android:layout_margin="13dp"
             android:cropToPadding="true"
             android:padding="4dp"
+            android:onClick="select"
             android:tag="6" />
 
         <ImageView
@@ -82,6 +85,7 @@
             android:layout_margin="13dp"
             android:cropToPadding="true"
             android:padding="4dp"
+            android:onClick="select"
             android:tag="1" />
 
         <ImageView
@@ -93,6 +97,7 @@
             android:layout_margin="13dp"
             android:cropToPadding="true"
             android:padding="4dp"
+            android:onClick="select"
             android:tag="4" />
 
         <ImageView
@@ -104,6 +109,7 @@
             android:layout_margin="13dp"
             android:cropToPadding="true"
             android:padding="4dp"
+            android:onClick="select"
             android:tag="7" />
 
         <ImageView
@@ -115,6 +121,7 @@
             android:layout_margin="13dp"
             android:cropToPadding="true"
             android:padding="4dp"
+            android:onClick="select"
             android:tag="2" />
 
         <ImageView
@@ -126,6 +133,7 @@
             android:layout_margin="13dp"
             android:cropToPadding="true"
             android:padding="4dp"
+            android:onClick="select"
             android:tag="5" />
 
         <ImageView
@@ -137,6 +145,7 @@
             android:layout_margin="13dp"
             android:cropToPadding="true"
             android:padding="4dp"
+            android:onClick="select"
             android:tag="8" />
     </GridLayout>
 
