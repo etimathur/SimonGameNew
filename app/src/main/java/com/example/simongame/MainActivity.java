@@ -6,12 +6,14 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.util.Log;
 
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
+import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -29,7 +31,7 @@ import static java.lang.Thread.*;
 
 
 public class MainActivity extends AppCompatActivity {
-
+    private Chronometer time ;
     int[] myImageList;
     ArrayList<Integer> list;
     ImageView[] imageViews;
@@ -42,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Integer> answer=new ArrayList<>();
     private static final String TAG = "MainActivity";
     int outLoop=0;
+    static int score=0;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
     }
     public void levelcheck() {
         generateImages();
+        time=findViewById(R.id.time);
+        time.start();
     }
     public void generateImages() {
         myImageList = new int[]{R.drawable.circleorange, R.drawable.circlegreen, R.drawable.circleyellow, R.drawable.circleorange, R.drawable.circlegreen, R.drawable.circleyellow, R.drawable.circleorange, R.drawable.circlegreen, R.drawable.circleyellow};
@@ -72,11 +80,6 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(TAG, "run: "+outLoop);
             }
         }, 1000 );
-
-
-
-
-
     }
     public void select(View view)
     {
@@ -105,18 +108,26 @@ public class MainActivity extends AppCompatActivity {
         for(int i=0;i<selans.size();i++){
             if(selans.get(i)!=answer.get(i)){
                 Log.d(TAG, "select: not same");
+                time.stop();
+                showElapsedTime();
                 Toast.makeText(MainActivity.this,"Wrong answer",Toast.LENGTH_SHORT).show();
                 Intent go=new Intent(MainActivity.this,MainActivity.class);
                 startActivity(go);
                 break;
             }
             if(selans.size()==answer.size()){
+                score++;
                 Toast.makeText(MainActivity.this,"Correct answer",Toast.LENGTH_SHORT).show();
                 outLoop++;
                 BlinkingImages(outLoop);
             }
         }
 
+    }
+
+    private void showElapsedTime() {
+        long elapsedMillis = SystemClock.elapsedRealtime() - time.getBase();
+        Toast.makeText(MainActivity.this, "Elapsed milliseconds,score: " + elapsedMillis+"+"+score,Toast.LENGTH_SHORT).show();
     }
     public void BlinkingImages(int count)  {
         for(int i=1;i<=count;i++){
